@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyberattack Detection</title>
+  <style>
+    /* Full-screen background image */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-image: url('data:image/jpeg;base64,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'); /* Replace with your own image or path */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Centralized form container with 1/4 screen dimensions */
+    .container {
+      max-width: 20vw;
+      max-height: 30vh;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    h1 {
+      margin-bottom: 15px;
+      color: #555;
+      font-size: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex-grow: 1;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    select,
+    input,
+    button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #f9f9f9;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Centered Form Section -->
+  <div class="container">
+    <h1>Cyberattack Detection</h1>
+    <form id="detection-form">
+      <label for="input_type">Select Input Type:</label>
+      <select id="input_type" name="input_type" required>
+        <option value="xss">XSS Attack Detection</option>
+        <option value="url">Malicious URL Detection</option>
+        <option value="sql">SQL Injection Detection</option>
+      </select>
+
+      <label for="input_text">Enter Input:</label>
+      <input type="text" id="input_text" name="input_text" placeholder="Enter text, URL, or SQL query" required />
+
+      <button type="submit">Submit</button>
+    </form>
+    <div id="result" class="result" style="display: none;">
+      <p id="result-text"></p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('detection-form');
+    const resultDiv = document.getElementById('result');
+    const resultText = document.getElementById('result-text');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      try {
+        const response = await fetch('/predict', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+          throw new Error('Prediction failed. Please check your input.');
+        }
+
+        const result = await response.json();
+        resultDiv.style.display = 'block';
+        resultText.textContent = `Type: ${result.type}, Result: ${result.result}`;
+      } catch (error) {
+        resultDiv.style.display = 'block';
+        resultText.textContent = error.message;
+      }
+    });
+  </script>
+</body>
+
+</html>

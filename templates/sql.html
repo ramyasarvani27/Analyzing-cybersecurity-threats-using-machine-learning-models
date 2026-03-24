@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Injection Detection</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 400px;
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 16px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .result {
+      margin-top: 1rem;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>SQL Injection Detection</h1>
+    <textarea id="sql-input" placeholder="Enter your input here..."></textarea>
+    <button onclick="predictSQL()">Detect</button>
+    <div id="sql-result" class="result"></div>
+  </div>
+  <script>
+    function predictSQL() {
+      const inputText = document.getElementById('sql-input').value.trim();
+
+      fetch('/sql', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ input_text: inputText })
+      })
+      .then(response => response.json())
+      .then(data => {
+        const resultDiv = document.getElementById('sql-result');
+        if (data.error) {
+          resultDiv.textContent = data.error;
+          resultDiv.style.color = 'red';
+        } else {
+          resultDiv.textContent = data.result;
+          resultDiv.style.color = data.result === 'SQL Injection Detected' ? 'red' : 'green';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
